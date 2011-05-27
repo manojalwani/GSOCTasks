@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/manoj/Desktop/task2
+CMAKE_SOURCE_DIR = /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/manoj/Desktop/task2
+CMAKE_BINARY_DIR = /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER
 
 # Include any dependencies generated for this target.
 include CMakeFiles/justforfun.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/justforfun.dir/flags.make
 
 CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o: CMakeFiles/justforfun.dir/flags.make
 CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o: JPGTODICOM_ImageWriter.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/manoj/Desktop/task2/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o -c /home/manoj/Desktop/task2/JPGTODICOM_ImageWriter.cxx
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o -c /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/JPGTODICOM_ImageWriter.cxx
 
 CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/manoj/Desktop/task2/JPGTODICOM_ImageWriter.cxx > CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/JPGTODICOM_ImageWriter.cxx > CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.i
 
 CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/manoj/Desktop/task2/JPGTODICOM_ImageWriter.cxx -o CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/JPGTODICOM_ImageWriter.cxx -o CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.s
 
 CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o.requires:
 .PHONY : CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o.requires
@@ -104,6 +104,6 @@ CMakeFiles/justforfun.dir/clean:
 .PHONY : CMakeFiles/justforfun.dir/clean
 
 CMakeFiles/justforfun.dir/depend:
-	cd /home/manoj/Desktop/task2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/manoj/Desktop/task2 /home/manoj/Desktop/task2 /home/manoj/Desktop/task2 /home/manoj/Desktop/task2 /home/manoj/Desktop/task2/CMakeFiles/justforfun.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/CMakeFiles/justforfun.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/justforfun.dir/depend
 

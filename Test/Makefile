@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER
+CMAKE_SOURCE_DIR = /home/manoj/Desktop/jp2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER
+CMAKE_BINARY_DIR = /home/manoj/Desktop/jp2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/CMakeFiles /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/CMakeFiles/progress.make
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manoj/Desktop/jp2/CMakeFiles /home/manoj/Desktop/jp2/CMakeFiles/progress.make
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manoj/Desktop/jp2/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,29 +111,29 @@ justforfun/fast:
 	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/build
 .PHONY : justforfun/fast
 
-JPGTODICOM_ImageWriter.o: JPGTODICOM_ImageWriter.cxx.o
-.PHONY : JPGTODICOM_ImageWriter.o
+test1.o: test1.cxx.o
+.PHONY : test1.o
 
 # target to build an object file
-JPGTODICOM_ImageWriter.cxx.o:
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o
-.PHONY : JPGTODICOM_ImageWriter.cxx.o
+test1.cxx.o:
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/test1.cxx.o
+.PHONY : test1.cxx.o
 
-JPGTODICOM_ImageWriter.i: JPGTODICOM_ImageWriter.cxx.i
-.PHONY : JPGTODICOM_ImageWriter.i
+test1.i: test1.cxx.i
+.PHONY : test1.i
 
 # target to preprocess a source file
-JPGTODICOM_ImageWriter.cxx.i:
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.i
-.PHONY : JPGTODICOM_ImageWriter.cxx.i
+test1.cxx.i:
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/test1.cxx.i
+.PHONY : test1.cxx.i
 
-JPGTODICOM_ImageWriter.s: JPGTODICOM_ImageWriter.cxx.s
-.PHONY : JPGTODICOM_ImageWriter.s
+test1.s: test1.cxx.s
+.PHONY : test1.s
 
 # target to generate assembly for a file
-JPGTODICOM_ImageWriter.cxx.s:
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.s
-.PHONY : JPGTODICOM_ImageWriter.cxx.s
+test1.cxx.s:
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/test1.cxx.s
+.PHONY : test1.cxx.s
 
 # Help Target
 help:
@@ -144,9 +144,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... justforfun"
 	@echo "... rebuild_cache"
-	@echo "... JPGTODICOM_ImageWriter.o"
-	@echo "... JPGTODICOM_ImageWriter.i"
-	@echo "... JPGTODICOM_ImageWriter.s"
+	@echo "... test1.o"
+	@echo "... test1.i"
+	@echo "... test1.s"
 .PHONY : help
 
 

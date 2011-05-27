@@ -1,0 +1,1 @@
+/usr/bin/c++      -Wno-deprecated     CMakeFiles/justforfun.dir/test1.cxx.o  -o justforfun -rdynamic -L/usr/lib/vtk-5.2 -lgdcmMSFF -lgdcmDICT -lgdcmIOD -lgdcmDSED -lgdcmCommon -lz -ldl -lssl -lcrypto -lexpat -lgdcmjpeg8 -lgdcmjpeg12 -lgdcmjpeg16 -lopenjpeg -luuid -Wl,-rpath,/usr/lib/vtk-5.2 

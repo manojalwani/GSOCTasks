@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/manoj/Desktop/task2/JPGTODICOM_ImageWriter.cxx
+/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/JPGTODICOM_ImageWriter.cxx
 gdcmImageReader.h
-/home/manoj/Desktop/task2/gdcmImageReader.h
+/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/gdcmImageReader.h
 gdcmSequenceOfFragments.h
-/home/manoj/Desktop/task2/gdcmSequenceOfFragments.h
+/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/gdcmSequenceOfFragments.h
 gdcmSystem.h
-/home/manoj/Desktop/task2/gdcmSystem.h
+/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/gdcmSystem.h
 gdcmImageWriter.h
-/home/manoj/Desktop/task2/gdcmImageWriter.h
+/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/gdcmImageWriter.h
 gdcmAttribute.h
-/home/manoj/Desktop/task2/gdcmAttribute.h
+/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/gdcmAttribute.h
 iostream
 -
 fstream

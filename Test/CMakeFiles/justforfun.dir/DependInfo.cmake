@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/JPGTODICOM_ImageWriter.cxx" "/home/manoj/Desktop/GSOCTasks/Task2/JPG_TO_DICOM_IMAGEWRITER/CMakeFiles/justforfun.dir/JPGTODICOM_ImageWriter.cxx.o"
+  "/home/manoj/Desktop/jp2/test1.cxx" "/home/manoj/Desktop/jp2/CMakeFiles/justforfun.dir/test1.cxx.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

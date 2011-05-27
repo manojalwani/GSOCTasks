@@ -1,0 +1,86 @@
+#include "gdcmReader.h"
+#include "gdcmImageWriter.h"
+#include "gdcmImageReader.h"
+#include "gdcmSequenceOfFragments.h"
+#include "gdcmFile.h"
+#include "gdcmSystem.h"
+#include "gdcmJPEG2000Codec.h"
+
+int main(int argc, char *argv[])
+{
+  if( argc < 3 )
+    {
+    std::cerr << argv[0] << " input.jp2 output.dcm" << std::endl;
+    return 1;
+    }
+
+ const char *filename = argv[1];
+ const char *outfilename = argv[2];
+
+
+ gdcm::JPEG2000Codec jpeg;
+ gdcm::ImageWriter writer;
+ gdcm::Image &image = writer.GetImage();
+ image.SetNumberOfDimensions( 2 );
+ gdcm::SmartPointer<gdcm::SequenceOfFragments> sq = new gdcm::SequenceOfFragments;
+
+  std::ifstream is(filename);
+  gdcm::TransferSyntax ts;
+  bool b = jpeg.GetHeaderInfo( is, ts );
+  if( !b )
+    { 
+     std::cout<<"Not able to read";
+     return false;
+    }
+  image.SetDimensions( jpeg.GetDimensions() );
+  image.SetPixelFormat( jpeg.GetPixelFormat() );
+  image.SetPhotometricInterpretation( jpeg.GetPhotometricInterpretation() );
+  image.SetTransferSyntax( ts );
+  size_t len = gdcm::System::FileSize(filename);
+
+  if( ts.IsEncapsulated() )
+    {
+    is.seekg(0, std::ios::beg );// rewind !
+    std::cout<<"yes yes yes!!!";
+    }
+
+  char *buf = new char[len];
+  is.read(buf, len);
+  gdcm::DataElement pixeldata( gdcm::Tag(0x7fe0,0x0010) );
+  gdcm::Fragment frag;
+  frag.SetByteValue( buf, len );
+  sq->AddFragment( frag );
+  pixeldata.SetValue( *sq );
+  image.SetDataElement( pixeldata );
+
+  writer.SetFileName( outfilename );
+  if( !writer.Write() )
+    {
+    return 1;
+    }
+  delete[] buf;
+
+
+  return 0;
+  
+
+
+/*
+ 
+ size_t len = gdcm::System::FileSize(filename);
+ std::ifstream is(filename);
+ std::cout<< len;
+ char * buf = new char[len];
+ if(!is.read(buf, len))
+  std::cout<< "not able to read";
+
+for(int i=0 ;i<100;i++)
+ std::cout << buf[i];
+
+
+
+*/
+
+
+
+}

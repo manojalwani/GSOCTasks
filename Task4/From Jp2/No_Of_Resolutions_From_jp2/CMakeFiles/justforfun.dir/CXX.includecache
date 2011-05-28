@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/manoj/Desktop/jp2_test/No_Of_Resolutions_From_jp2/No_Of_Resolutions.cxx
+fstream
+-
+openjpeg.h
+-
+stdint.h
+-
+string.h
+-
+assert.h
+-
+gdcm_j2k.h
+-
+gdcm_jp2.h
+-
+iostream
+-
+cstring
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+math.h
+-
+
+/usr/include/gdcm-2.0/gdcm_j2k.h
+
+/usr/include/gdcm-2.0/gdcm_jp2.h
+

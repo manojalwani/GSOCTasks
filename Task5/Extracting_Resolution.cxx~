@@ -154,6 +154,9 @@ bool Get_Resolution(gdcm::ImageWriter & writer, gdcm::SequenceOfFragments *sq ,c
   gdcm::PhotometricInterpretation pi = gdcm::PhotometricInterpretation::RGB ;
   image1.SetPhotometricInterpretation( pi );
   image1.SetTransferSyntax( gdcm::TransferSyntax::ExplicitVRLittleEndian );
+
+    is.seekg(0, std::ios::beg );
+
      
     gdcm::DataElement pixeldata( gdcm::Tag(0x7fe0,0x0010) );
     gdcm::Fragment frag;

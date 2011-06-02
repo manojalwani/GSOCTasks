@@ -167,7 +167,8 @@ int main(int argc, char *argv[])
   gdcm::PhotometricInterpretation pi = gdcm::PhotometricInterpretation::RGB ;
   image1.SetPhotometricInterpretation( pi );
   image1.SetTransferSyntax( gdcm::TransferSyntax::ExplicitVRLittleEndian );
-
+ 
+      
       gdcm::DataElement pixeldata( gdcm::Tag(0x7fe0,0x0010) );
       pixeldata.SetByteValue( raw, len );
       image1.SetDataElement( pixeldata );

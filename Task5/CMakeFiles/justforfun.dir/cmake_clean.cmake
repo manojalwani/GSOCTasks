@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o"
+  "CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o"
   "justforfun.pdb"
   "justforfun"
 )

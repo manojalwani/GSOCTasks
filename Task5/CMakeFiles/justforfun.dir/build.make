@@ -49,38 +49,38 @@ include CMakeFiles/justforfun.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/justforfun.dir/flags.make
 
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o: CMakeFiles/justforfun.dir/flags.make
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o: Extracting_Resolution.cxx
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o: CMakeFiles/justforfun.dir/flags.make
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o: Extracting_All_Resolution.cxx
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/manoj/Desktop/GSOCTasks/Task5/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o -c /home/manoj/Desktop/GSOCTasks/Task5/Extracting_Resolution.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o -c /home/manoj/Desktop/GSOCTasks/Task5/Extracting_All_Resolution.cxx
 
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/manoj/Desktop/GSOCTasks/Task5/Extracting_Resolution.cxx > CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.i
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/manoj/Desktop/GSOCTasks/Task5/Extracting_All_Resolution.cxx > CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.i
 
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/manoj/Desktop/GSOCTasks/Task5/Extracting_Resolution.cxx -o CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.s
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/manoj/Desktop/GSOCTasks/Task5/Extracting_All_Resolution.cxx -o CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.s
 
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.requires:
-.PHONY : CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.requires
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.requires:
+.PHONY : CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.requires
 
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.provides: CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.requires
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.provides.build
-.PHONY : CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.provides
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.provides: CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.requires
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.provides.build
+.PHONY : CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.provides
 
-CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.provides.build: CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o
-.PHONY : CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.provides.build
+CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.provides.build: CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o
+.PHONY : CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.provides.build
 
 # Object files for target justforfun
 justforfun_OBJECTS = \
-"CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o"
+"CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o"
 
 # External object files for target justforfun
 justforfun_EXTERNAL_OBJECTS =
 
-justforfun: CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o
+justforfun: CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o
 justforfun: /usr/lib/libz.so
 justforfun: /usr/lib/libssl.so
 justforfun: /usr/lib/libcrypto.so
@@ -96,7 +96,7 @@ justforfun: CMakeFiles/justforfun.dir/link.txt
 CMakeFiles/justforfun.dir/build: justforfun
 .PHONY : CMakeFiles/justforfun.dir/build
 
-CMakeFiles/justforfun.dir/requires: CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o.requires
+CMakeFiles/justforfun.dir/requires: CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o.requires
 .PHONY : CMakeFiles/justforfun.dir/requires
 
 CMakeFiles/justforfun.dir/clean:

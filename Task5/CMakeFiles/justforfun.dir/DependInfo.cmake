@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/manoj/Desktop/GSOCTasks/Task5/Extracting_Resolution.cxx" "/home/manoj/Desktop/GSOCTasks/Task5/CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o"
+  "/home/manoj/Desktop/GSOCTasks/Task5/Extracting_All_Resolution.cxx" "/home/manoj/Desktop/GSOCTasks/Task5/CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

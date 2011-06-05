@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/manoj/Desktop/GSOCTasks/Task5/Extracting_Resolution.cxx
+/home/manoj/Desktop/GSOCTasks/Task5/Extracting_All_Resolution.cxx
 fstream
 -
 openjpeg.h

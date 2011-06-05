@@ -111,29 +111,29 @@ justforfun/fast:
 	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/build
 .PHONY : justforfun/fast
 
-Extracting_Resolution.o: Extracting_Resolution.cxx.o
-.PHONY : Extracting_Resolution.o
+Extracting_All_Resolution.o: Extracting_All_Resolution.cxx.o
+.PHONY : Extracting_All_Resolution.o
 
 # target to build an object file
-Extracting_Resolution.cxx.o:
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.o
-.PHONY : Extracting_Resolution.cxx.o
+Extracting_All_Resolution.cxx.o:
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.o
+.PHONY : Extracting_All_Resolution.cxx.o
 
-Extracting_Resolution.i: Extracting_Resolution.cxx.i
-.PHONY : Extracting_Resolution.i
+Extracting_All_Resolution.i: Extracting_All_Resolution.cxx.i
+.PHONY : Extracting_All_Resolution.i
 
 # target to preprocess a source file
-Extracting_Resolution.cxx.i:
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.i
-.PHONY : Extracting_Resolution.cxx.i
+Extracting_All_Resolution.cxx.i:
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.i
+.PHONY : Extracting_All_Resolution.cxx.i
 
-Extracting_Resolution.s: Extracting_Resolution.cxx.s
-.PHONY : Extracting_Resolution.s
+Extracting_All_Resolution.s: Extracting_All_Resolution.cxx.s
+.PHONY : Extracting_All_Resolution.s
 
 # target to generate assembly for a file
-Extracting_Resolution.cxx.s:
-	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_Resolution.cxx.s
-.PHONY : Extracting_Resolution.cxx.s
+Extracting_All_Resolution.cxx.s:
+	$(MAKE) -f CMakeFiles/justforfun.dir/build.make CMakeFiles/justforfun.dir/Extracting_All_Resolution.cxx.s
+.PHONY : Extracting_All_Resolution.cxx.s
 
 # Help Target
 help:
@@ -144,9 +144,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... justforfun"
 	@echo "... rebuild_cache"
-	@echo "... Extracting_Resolution.o"
-	@echo "... Extracting_Resolution.i"
-	@echo "... Extracting_Resolution.s"
+	@echo "... Extracting_All_Resolution.o"
+	@echo "... Extracting_All_Resolution.i"
+	@echo "... Extracting_All_Resolution.s"
 .PHONY : help
 
 

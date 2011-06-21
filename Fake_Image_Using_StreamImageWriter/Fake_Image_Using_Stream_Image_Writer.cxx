@@ -1,16 +1,3 @@
-/*=========================================================================
-
-  Program: GDCM (Grassroots DICOM). A DICOM library
-
-  Copyright (c) 2006-2011 Mathieu Malaterre
-  All rights reserved.
-  See Copyright.txt or http://gdcm.sourceforge.net/Copyright.html for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-     PURPOSE.  See the above copyright notice for more information.
-
-=========================================================================*/
 #include "gdcmReader.h"
 #include "gdcmMediaStorage.h"
 #include "gdcmWriter.h"
@@ -28,8 +15,7 @@
 
 int main(int, char *[])
 {
-  //Fake Image
-  gdcm::SmartPointer<gdcm::Image> im = new gdcm::Image;
+  
 
   char * buffer = new char[ 256 * 256 * 3];
   char * p = buffer;
@@ -38,6 +24,7 @@ gdcm::Trace::DebugOn();
   gdcm::Trace::WarningOn();
 
   
+  int ybr2[3];
   
 
   for(int row = 0; row < 256; ++row)
@@ -55,7 +42,7 @@ gdcm::Trace::DebugOn();
   gdcm::File &file = w.GetFile();
   gdcm::DataSet &ds = file.GetDataSet();
   
-  file.GetHeader().SetDataSetTransferSyntax( gdcm::TransferSyntax::ImplicitVRLittleEndian );
+  file.GetHeader().SetDataSetTransferSyntax( gdcm::TransferSyntax::ExplicitVRLittleEndian );
     
 
   gdcm::UIDGenerator uid;
@@ -67,7 +54,7 @@ gdcm::Trace::DebugOn();
 
   gdcm::DataElement de1( gdcm::Tag(0x8,0x16) );
   de1.SetVR( gdcm::VR::UI );
-  gdcm::MediaStorage ms( gdcm::MediaStorage::RawDataStorage );
+  gdcm::MediaStorage ms( gdcm::MediaStorage::CTImageStorage );
   de1.SetByteValue( ms.GetString(), strlen(ms.GetString()));
   ds.Insert( de1 );
 
@@ -109,7 +96,6 @@ gdcm::Trace::DebugOn();
  //de.SetTag(gdcm::Tag(0x7fe0,0x0010));
  //ds.Insert(de);
 
-  gdcm::ImageReader theImageReaderOriginal;
   gdcm::StreamImageWriter theStreamWriter;
   
  theStreamWriter.SetFile(file);

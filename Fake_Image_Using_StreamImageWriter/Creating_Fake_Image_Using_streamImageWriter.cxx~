@@ -28,8 +28,8 @@
 
 int main(int, char *[])
 {
-  //Fake Image
   
+
   char * buffer = new char[ 256 * 256 * 3];
   char * p = buffer;
   
@@ -37,7 +37,6 @@ gdcm::Trace::DebugOn();
   gdcm::Trace::WarningOn();
 
   
-  int ybr2[3];
   
 
   for(int row = 0; row < 256; ++row)
@@ -109,7 +108,7 @@ gdcm::Trace::DebugOn();
  //de.SetTag(gdcm::Tag(0x7fe0,0x0010));
  //ds.Insert(de);
 
-  gdcm::ImageReader theImageReaderOriginal;
+  
   gdcm::StreamImageWriter theStreamWriter;
   
  theStreamWriter.SetFile(file);

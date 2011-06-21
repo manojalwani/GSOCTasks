@@ -29,8 +29,7 @@
 int main(int, char *[])
 {
   //Fake Image
-  gdcm::SmartPointer<gdcm::Image> im = new gdcm::Image;
-
+  
   char * buffer = new char[ 256 * 256 * 3];
   char * p = buffer;
   

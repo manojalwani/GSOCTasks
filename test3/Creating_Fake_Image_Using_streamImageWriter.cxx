@@ -38,7 +38,6 @@ gdcm::Trace::DebugOn();
   gdcm::Trace::WarningOn();
 
   
-  int ybr2[3];
   
 
   for(int row = 0; row < 256; ++row)

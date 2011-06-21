@@ -55,7 +55,7 @@ gdcm::Trace::DebugOn();
   gdcm::File &file = w.GetFile();
   gdcm::DataSet &ds = file.GetDataSet();
   
-  file.GetHeader().SetDataSetTransferSyntax( gdcm::TransferSyntax::ImplicitVRLittleEndian );
+  file.GetHeader().SetDataSetTransferSyntax( gdcm::TransferSyntax::ExplicitVRLittleEndian );
     
 
   gdcm::UIDGenerator uid;
@@ -67,7 +67,7 @@ gdcm::Trace::DebugOn();
 
   gdcm::DataElement de1( gdcm::Tag(0x8,0x16) );
   de1.SetVR( gdcm::VR::UI );
-  gdcm::MediaStorage ms( gdcm::MediaStorage::RawDataStorage );
+  gdcm::MediaStorage ms( gdcm::MediaStorage::CTImageStorage);
   de1.SetByteValue( ms.GetString(), strlen(ms.GetString()));
   ds.Insert( de1 );
 

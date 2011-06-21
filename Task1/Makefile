@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/manoj/Desktop/GSOC Tasks/task1"
+CMAKE_SOURCE_DIR = /home/manoj/Desktop/GSOCTasks/Task1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/manoj/Desktop/GSOC Tasks/task1"
+CMAKE_BINARY_DIR = /home/manoj/Desktop/GSOCTasks/Task1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/manoj/Desktop/GSOC Tasks/task1/CMakeFiles" "/home/manoj/Desktop/GSOC Tasks/task1/CMakeFiles/progress.make"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manoj/Desktop/GSOCTasks/Task1/CMakeFiles /home/manoj/Desktop/GSOCTasks/Task1/CMakeFiles/progress.make
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/manoj/Desktop/GSOC Tasks/task1/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manoj/Desktop/GSOCTasks/Task1/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

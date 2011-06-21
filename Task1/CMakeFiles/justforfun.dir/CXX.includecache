@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/manoj/Desktop/GSOC Tasks/task1/HelloVizWorld.cxx
+/home/manoj/Desktop/GSOCTasks/Task1/HelloVizWorld.cxx
 gdcmImageReader.h
-/home/manoj/Desktop/GSOC Tasks/task1/gdcmImageReader.h
+/home/manoj/Desktop/GSOCTasks/Task1/gdcmImageReader.h
 gdcmImageWriter.h
-/home/manoj/Desktop/GSOC Tasks/task1/gdcmImageWriter.h
+/home/manoj/Desktop/GSOCTasks/Task1/gdcmImageWriter.h
 gdcmImage.h
-/home/manoj/Desktop/GSOC Tasks/task1/gdcmImage.h
+/home/manoj/Desktop/GSOCTasks/Task1/gdcmImage.h
 gdcmPhotometricInterpretation.h
-/home/manoj/Desktop/GSOC Tasks/task1/gdcmPhotometricInterpretation.h
+/home/manoj/Desktop/GSOCTasks/Task1/gdcmPhotometricInterpretation.h
 iostream
 -
 

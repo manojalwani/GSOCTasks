@@ -235,8 +235,6 @@ int main(int argc, char *argv[])
         theStreamWriter.SetStream(of); 
 	
 
- 
-
 if (!theStreamWriter.CanWriteFile()){
       delete [] raw;
       std::cout << "Not able to write";
@@ -257,7 +255,7 @@ if (!theStreamWriter.WriteImageInformation()){
 
     unsigned short xmax = extent[0];
     unsigned short ymax = extent[1];
-    unsigned short theChunkSize = 1;
+    unsigned short theChunkSize = 4;
     unsigned short ychunk = extent[1]/theChunkSize; //go in chunk sizes of theChunkSize
     unsigned short zmax = extent[2];
    
@@ -300,22 +298,22 @@ if (!theStreamWriter.WriteImageInformation()){
 
   /* free the memory containing the code-stream */
 
-/* 
-uint16_t firstTag1 =  0xfffe;
- uint16_t secondTag1 = 0xe00d;
- uint16_t thirdTag1 =  0xffff;
- uint16_t fourthTag1 = 0xffff;
- const int theBufferSize1 = 4*sizeof(uint16_t);
+ 
+ uint16_t firstTag1 =  0xfffe;
+ uint16_t secondTag1 = 0xe0dd;
+ uint32_t thirdTag1 =  0x00000000;
+ //uint16_t fourthTag1 = 0xffff;
+ const int theBufferSize1 = 2*sizeof(uint16_t)+sizeof(uint32_t);
  char* tmpBuffer2 = new char[theBufferSize1];
  memcpy(&(tmpBuffer2[0]), &firstTag1, sizeof(uint16_t));
  memcpy(&(tmpBuffer2[sizeof(uint16_t)]), &secondTag1, sizeof(uint16_t));
- memcpy(&(tmpBuffer2[2*sizeof(uint16_t)]), &thirdTag1, sizeof(uint16_t));
- memcpy(&(tmpBuffer2[3*sizeof(uint16_t)]), &fourthTag1, sizeof(uint16_t));
+ memcpy(&(tmpBuffer2[2*sizeof(uint16_t)]), &thirdTag1, sizeof(uint32_t));
+ //memcpy(&(tmpBuffer2[3*sizeof(uint16_t)]), &fourthTag1, sizeof(uint16_t));
  assert( of && !of.eof() && of.good() );
  of.write(tmpBuffer2, theBufferSize1);
  of.flush();
  assert( of );
- */
+
 
 
   delete[] src;  //FIXME

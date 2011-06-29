@@ -14,6 +14,9 @@
 #include "gdcmImageReader.h"
 #include "gdcmSequenceOfFragments.h"
 #include "gdcmSystem.h"
+#include <fstream>
+
+
 
 #include "gdcmMediaStorage.h"
 #include "gdcmWriter.h"
@@ -40,25 +43,9 @@ void info_callback(const char *msg, void *) {
 }
 
 
-int main(int argc, char *argv[])
+bool Write_Resolution(gdcm::StreamImageWriter & theStreamWriter, const char *filename, int res, std::ostream& of, int flag)
 {
-
-
-   if( argc < 4 )
-    {
-    std::cerr << argv[0] << " input.jp2 output.dcm Resolution " << std::endl;
-    return 1;
-    }
-
-  gdcm::Trace::DebugOn();
-  gdcm::Trace::WarningOn();
-
   std::ifstream is;
-  const char *filename = argv[1];
-  const char *outfilename = argv[2]; 
-  char *resolutions = argv[3];
-  int res = int((*resolutions)-48);
-
   is.open( filename );
   opj_dparameters_t parameters;  /* decompression parameters */
   opj_event_mgr_t event_mgr;    /* event manager */
@@ -134,11 +121,11 @@ int main(int argc, char *argv[])
        opj_cp_t * cp = ((opj_jp2_t*)dinfo->jp2_handle)->j2k->cp;
        opj_tcp_t *tcp = &cp->tcps[0];
        opj_tccp_t *tccp = &tcp->tccps[0];
-       std::cout << "\n No of Cols In Image" << image->x1;
+    /*   std::cout << "\n No of Cols In Image" << image->x1;
        std::cout << "\n No of Rows In Image" << image->y1;
        std::cout << "\n No of Components in Image" << image->numcomps;
        std::cout << "\n No of Resolutions"<< tccp->numresolutions << "\n";
-
+*/
         opj_j2k_t* j2k = NULL;
         opj_jp2_t* jp2 = NULL;
         jp2 = (opj_jp2_t*)dinfo->jp2_handle;
@@ -170,6 +157,7 @@ int main(int argc, char *argv[])
         }
     }
  
+
   gdcm::Writer w;
   gdcm::File &file = w.GetFile();
   gdcm::DataSet &ds = file.GetDataSet();
@@ -217,22 +205,122 @@ int main(int argc, char *argv[])
    ds.Insert( at2.GetAsDataElement() );
 
   gdcm::Attribute<0x0028,0x0102> at3 = {7};
-   ds.Insert( at3.GetAsDataElement() );
+  ds.Insert( at3.GetAsDataElement() );
  
+ // gdcm::DataElement de3( gdcm::Tag(0x7fe0,0x0010) );
+ //de.SetTag(gdcm::Tag(0xfffe,0xe000));
+  //ds.Insert(de3);
+
+  //gdcm::StreamImageWriter theStreamWriter;
+
+
  
- //de.SetTag(gdcm::Tag(0x7fe0,0x0010));
- //ds.Insert(de);
 
-  gdcm::StreamImageWriter theStreamWriter;
-  
- theStreamWriter.SetFile(file);
-
-	std::ofstream of;
+	/*std::ofstream of;
 	of.open( outfilename, std::ios::out | std::ios::binary );
-	theStreamWriter.SetStream(of);
+        theStreamWriter.SetStream(of); 
+	*/
 
 
-if (!theStreamWriter.CanWriteFile()){
+
+  if (flag == 1)
+  {
+
+  gdcm::Writer w1;
+  gdcm::File &file1 = w1.GetFile();
+  gdcm::DataSet &ds1 = file1.GetDataSet();
+  
+  file1.GetHeader().SetDataSetTransferSyntax( gdcm::TransferSyntax::ExplicitVRLittleEndian );
+    
+
+  gdcm::UIDGenerator uid1;
+  gdcm::DataElement dea( gdcm::Tag(0x8,0x18) ); // SOP Instance UID
+  dea.SetVR( gdcm::VR::UI );
+  const char *u1 = uid1.Generate();
+  dea.SetByteValue( u1, strlen(u1) );
+  ds1.Insert( dea );
+
+  gdcm::DataElement deb( gdcm::Tag(0x8,0x16) );
+  deb.SetVR( gdcm::VR::UI );
+  gdcm::MediaStorage ms1( gdcm::MediaStorage::CTImageStorage );
+  deb.SetByteValue( ms1.GetString(), strlen(ms1.GetString()));
+  ds1.Insert( deb );
+
+  const char mystr1[] = "MONOCHROME2 ";
+  gdcm::DataElement dec( gdcm::Tag(0x28,0x04) );
+  //de.SetTag(gdcm::Tag(0x28,0x04));
+  dec.SetVR( gdcm::VR::CS );
+  dec.SetByteValue(mystr, strlen(mystr1));
+  ds1.Insert( dec );
+
+   gdcm::Attribute<0x0028,0x0010> row1 = {image->y1};
+   //row.SetValue(512);
+   ds1.Insert( row1.GetAsDataElement() );
+ //  w.SetCheckFileMetaInformation( true );
+   gdcm::Attribute<0x0028,0x0011> col1 = {image->x1};
+   ds1.Insert( col1.GetAsDataElement() );
+  
+   gdcm::Attribute<0x0028,0x0008> Number_Of_Frames1 = {tccp->numresolutions};
+   ds1.Insert( Number_Of_Frames1.GetAsDataElement() );
+
+   gdcm::Attribute<0x0028,0x0100> ata = {8};
+   ds1.Insert( ata.GetAsDataElement() );
+
+   gdcm::Attribute<0x0028,0x0002> atb = {image->numcomps};
+   ds1.Insert( atb.GetAsDataElement() );
+
+  gdcm::Attribute<0x0028,0x0101> atc = {8};
+   ds1.Insert( atc.GetAsDataElement() );
+
+  gdcm::Attribute<0x0028,0x0102> atd = {7};
+  ds1.Insert( atd.GetAsDataElement() );
+
+   theStreamWriter.SetFile(file1);
+  
+  if (!theStreamWriter.WriteImageInformation()){
+      std::cerr << "unable to write image information" << std::endl;
+      return 1; //the CanWrite function should prevent getting here, else,
+      //that's a test failure∫
+    }
+  uint16_t firstTag = 0x7fe0;
+  uint16_t secondTag = 0x0010;
+  //uint16_t thirdTag = 0x4f42;
+  uint16_t thirdTag = 0x424f; // OB
+  uint16_t fourthTag = 0x0000;
+  //uint16_t fourthTag = 0x0000;
+
+  uint32_t fifthTag = 0xffffffff;
+
+  uint16_t sixthTag = 0xfffe;
+  uint16_t seventhTag = 0xe000;
+  uint32_t eightthTag = 0x00000000;
+
+  const int theBufferSize = 4*sizeof(uint16_t)+sizeof(uint32_t)+2*sizeof(uint16_t)+sizeof(uint32_t);
+  char* tmpBuffer1 = new char[theBufferSize];
+
+    memcpy(&(tmpBuffer1[0]), &firstTag, sizeof(uint16_t));
+    memcpy(&(tmpBuffer1[sizeof(uint16_t)]), &secondTag, sizeof(uint16_t));
+    memcpy(&(tmpBuffer1[2*sizeof(uint16_t)]), &thirdTag, sizeof(uint16_t));
+    memcpy(&(tmpBuffer1[3*sizeof(uint16_t)]), &fourthTag, sizeof(uint16_t));
+
+   //Addition by Manoj
+    memcpy(&(tmpBuffer1[4*sizeof(uint16_t)]), &fifthTag, sizeof(uint32_t));// Data Element Length 4 bytes 
+
+
+    // Basic OffSet Tabl with No Item Value
+    memcpy(&(tmpBuffer1[4*sizeof(uint16_t)+sizeof(uint32_t)]), &sixthTag, sizeof(uint16_t)); //fffe
+    memcpy(&(tmpBuffer1[5*sizeof(uint16_t)+sizeof(uint32_t)]), &seventhTag, sizeof(uint16_t));//e000
+    memcpy(&(tmpBuffer1[6*sizeof(uint16_t)+sizeof(uint32_t)]), &eightthTag, sizeof(uint32_t));//00000000H
+ 
+ assert( of && !of.eof() && of.good() );
+ of.write(tmpBuffer1, theBufferSize);
+ of.flush();
+ assert( of );
+ }
+
+   theStreamWriter.SetFile(file);
+
+  if (!theStreamWriter.CanWriteFile()){
       delete [] raw;
       std::cout << "Not able to write";
       return 0;//this means that the file was unwritable, period.
@@ -241,18 +329,12 @@ if (!theStreamWriter.CanWriteFile()){
 else
    std::cout<<"\nabletoread";
 
-if (!theStreamWriter.WriteImageInformation()){
-      std::cerr << "unable to write image information" << std::endl;
-      delete [] raw;
-      return 1; //the CanWrite function should prevent getting here, else,
-      //that's a test failure∫
-    }
-
+ // Important to write here
  std::vector<unsigned int> extent = gdcm::ImageHelper::GetDimensionsValue(file);
 
     unsigned short xmax = extent[0];
     unsigned short ymax = extent[1];
-    unsigned short theChunkSize = 1;
+    unsigned short theChunkSize = 4;
     unsigned short ychunk = extent[1]/theChunkSize; //go in chunk sizes of theChunkSize
     unsigned short zmax = extent[2];
    
@@ -264,6 +346,7 @@ if (!theStreamWriter.WriteImageInformation()){
       std::cerr << "Image has no size, unable to write zero-sized image." << std::endl;
       return 0;
       }
+
 
     int z, y, nexty;
     unsigned long prevLen = 0; //when going through the char buffer, make sure to grab
@@ -291,7 +374,6 @@ if (!theStreamWriter.WriteImageInformation()){
     }
     delete raw;
 
-  /* free the memory containing the code-stream */
   delete[] src;  //FIXME
 
 if(dinfo) {
@@ -299,6 +381,70 @@ if(dinfo) {
   }
 
  opj_image_destroy(image);
+
+ return true;
+
+}
+
+bool Different_Resolution( gdcm::StreamImageWriter & theStreamWriter, const char *filename, int res, std::ostream& of)
+{
+  //std::vector<std::string>::const_iterator it = filenames.begin();
+  bool b = true;
+  int flag = 1;
+  
+  for(int i = res-1 ; i>=0; --i)
+  {
+    b = b && Write_Resolution( theStreamWriter, filename, i, of ,flag);
+   // b = b && Get_Resolution( theStreamWriter, filename, i, of ,0);
+    flag = 0;
+  }  
+  //b = b && Get_Lowest_Resolution( writer, sq, filename, res-1 );
+  //b = b && PopulateSingeFile( writer, sq, jpeg, filename2 );
+  //image.SetDimension(2,  res )
+  
+  return b;
+}
+
+
+int main(int argc, char *argv[])
+{
+
+
+   if( argc < 4 )
+    {
+    std::cerr << argv[0] << " input.jp2 output.dcm No. Of Resolutions " << std::endl;
+    return 1;
+    }
+   const char *filename = argv[1];
+  const char *outfilename = argv[2]; 
+  char *resolutions = argv[3];
+   int res = int((*resolutions)-48);
+    //std:: cout << "\nres"<< res;
+   gdcm::StreamImageWriter theStreamWriter;
+
+   std::ofstream of;
+   of.open( outfilename, std::ios::out | std::ios::binary );
+   theStreamWriter.SetStream(of); 
+	
+
+   if( !Different_Resolution( theStreamWriter, filename,res,of ) ) return 1;  
+
+ uint16_t firstTag1 =  0xfffe;
+ uint16_t secondTag1 = 0xe0dd;
+ uint32_t thirdTag1 =  0x00000000;
+ //uint16_t fourthTag1 = 0xffff;
+ const int theBufferSize1 = 2*sizeof(uint16_t)+sizeof(uint32_t);
+ char* tmpBuffer2 = new char[theBufferSize1];
+ memcpy(&(tmpBuffer2[0]), &firstTag1, sizeof(uint16_t));
+ memcpy(&(tmpBuffer2[sizeof(uint16_t)]), &secondTag1, sizeof(uint16_t));
+ memcpy(&(tmpBuffer2[2*sizeof(uint16_t)]), &thirdTag1, sizeof(uint32_t));
+ //memcpy(&(tmpBuffer2[3*sizeof(uint16_t)]), &fourthTag1, sizeof(uint16_t));
+ assert( of && !of.eof() && of.good() );
+ of.write(tmpBuffer2, theBufferSize1);
+ of.flush();
+ assert( of );
+
+
 
   
 return 0;

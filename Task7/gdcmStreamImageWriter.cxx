@@ -132,13 +132,11 @@ int StreamImageWriter::WriteRawHeader(RAWCodec* inCodec, std::ostream* inStream)
   
   uint16_t fourthTag = 0x0000;
 
-  uint16_t fifthTag = 0xffff;
-  uint16_t fifth1Tag = 0xffff;
+  uint32_t fifthTag = 0xffffffff;
 
   uint16_t sixthTag = 0xfffe;
   uint16_t seventhTag = 0xe000;
-  uint32_t eightthTag = 0x0000;
-  uint32_t eightth1Tag = 0x0000;
+  uint32_t eightthTag = 0x00000000;
 
   uint16_t ninthTag = 0xfffe;
   uint16_t tenthTag = 0xe000;
@@ -149,34 +147,19 @@ int StreamImageWriter::WriteRawHeader(RAWCodec* inCodec, std::ostream* inStream)
   int bytesPerPixel = pixelInfo.GetPixelSize();
   uint32_t sizeTag = extent[0]*extent[1]*extent[2]*bytesPerPixel;
 
-  const int theBufferSize = 4*sizeof(uint16_t)+2*sizeof(uint16_t)+2*sizeof(uint16_t)+2*sizeof(uint16_t)+2*sizeof(uint16_t)+sizeof(uint32_t);
+  const int theBufferSize = 2*sizeof(uint16_t)+sizeof(uint32_t);
 
   char* tmpBuffer1 = new char[theBufferSize];
   char* tmpBuffer2 = new char[theBufferSize];
 //  std::streamoff theOffset;
 
   try {
-    memcpy(&(tmpBuffer1[0]), &firstTag, sizeof(uint16_t));
-    memcpy(&(tmpBuffer1[sizeof(uint16_t)]), &secondTag, sizeof(uint16_t));
-    memcpy(&(tmpBuffer1[2*sizeof(uint16_t)]), &thirdTag, sizeof(uint16_t));
-    memcpy(&(tmpBuffer1[3*sizeof(uint16_t)]), &fourthTag, sizeof(uint16_t));
-
-   //Addition by Manoj
-    memcpy(&(tmpBuffer1[4*sizeof(uint16_t)]), &fifthTag, sizeof(uint16_t));// Data Element Length 4 bytes 
-    memcpy(&(tmpBuffer1[5*sizeof(uint16_t)]), &fifth1Tag, sizeof(uint16_t));
-
-    // Basic OffSet Tabl with No Item Value
-    memcpy(&(tmpBuffer1[6*sizeof(uint16_t)]), &sixthTag, sizeof(uint16_t)); //fffe
-    memcpy(&(tmpBuffer1[7*sizeof(uint16_t)]), &seventhTag, sizeof(uint16_t));//e000
-    memcpy(&(tmpBuffer1[8*sizeof(uint16_t)]), &eightthTag, sizeof(uint16_t));//00000000H
-    memcpy(&(tmpBuffer1[9*sizeof(uint16_t)]), &eightth1Tag, sizeof(uint16_t));//00000000H
-  // memcpy(&(tmpBuffer1[6*sizeof(uint16_t)+sizeof(uint32_t)]), &sizeTag, sizeof(uint32_t));
 
     //First Fragment (Single Frame) of Pixel Data
-    memcpy(&(tmpBuffer1[10*sizeof(uint16_t)]), &ninthTag, sizeof(uint16_t)); //fffe
-    memcpy(&(tmpBuffer1[11*sizeof(uint16_t)]), &tenthTag, sizeof(uint16_t)); //e000
+    memcpy(&(tmpBuffer1[0]), &ninthTag, sizeof(uint16_t)); //fffe
+    memcpy(&(tmpBuffer1[sizeof(uint16_t)]), &tenthTag, sizeof(uint16_t)); //e000
 
-    memcpy(&(tmpBuffer1[12*sizeof(uint16_t)]), &sizeTag, sizeof(uint32_t));//Item Length
+    memcpy(&(tmpBuffer1[2*sizeof(uint16_t)]), &sizeTag, sizeof(uint32_t));//Item Length
     //run that through the codec
 
     if (!inCodec->DecodeBytes(tmpBuffer1, theBufferSize,
@@ -265,6 +248,7 @@ bool StreamImageWriter::WriteImageSubregionRAW(char* inWriteBuffer, const std::s
       mElementOffsets = WriteRawHeader(&theCodec, theStream);
     }
     if (mElementOffsets < 0){//something broke during writing
+      std::cout << "Broke";
       delete [] tmpBuffer;
       delete [] tmpBuffer2;
       return false;
@@ -332,8 +316,9 @@ bool StreamImageWriter::WriteImageInformation(){
   try
   {
     //question! is this file a copy of the file that was given in, or a reference?
-    mFile.GetDataSet().Remove( Tag(0x7fe0,0x0010) ); // FIXME
-    assert( !mFile.GetDataSet().FindDataElement( Tag(0x7fe0,0x0010) ) );
+   
+     mFile.GetDataSet().Remove( Tag(0x7fe0,0x0010) ); // FIXME
+     assert( !mFile.GetDataSet().FindDataElement( Tag(0x7fe0,0x0010) ) );
     if( !mWriter.Write() )//should write everything BUT the image tag.  right?
       {
       //assert( 0 );//this assert fires when the image is not writeable, ie, doesn't have
@@ -417,6 +402,9 @@ bool StreamImageWriter::CanWriteFile() const
 void StreamImageWriter::SetFile(const File& inFile)
 {
   mspFile = inFile;
+  File &mFile = *mspFile;
+  mWriter.SetFile(mFile);
+  mElementOffsets = 0;
 }
 
 } // end namespace gdcm
